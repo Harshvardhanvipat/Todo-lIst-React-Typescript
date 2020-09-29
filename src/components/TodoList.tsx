@@ -3,7 +3,7 @@ import { Todo } from "../App";
 
 interface TodoListProps {
   todos: Todo[];
-  setTodos: any;
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
 function TodoList({ todos, setTodos }: TodoListProps) {
@@ -12,10 +12,11 @@ function TodoList({ todos, setTodos }: TodoListProps) {
   });
 
   function updateCheckedItem(todo: Todo) {
-    todo.isDone = !todo.isDone;
-    todos[todo.id] = todo;
-
-    setTodos([...todos]);
+    setTodos((todoArray) => {
+      return todoArray.map((td) => {
+        return td.id === todo.id ? { ...todo, isDone: !td.isDone } : td;
+      });
+    });
   }
 
   return (

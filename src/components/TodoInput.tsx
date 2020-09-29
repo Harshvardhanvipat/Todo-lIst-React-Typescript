@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Todo } from "../App";
 
 interface TodoInputProps {
-  addTodo: any;
+  addTodo(todo: Todo): void;
 }
 
 function TodoInput({ addTodo }: TodoInputProps) {

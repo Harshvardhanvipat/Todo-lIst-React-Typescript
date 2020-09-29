@@ -26,9 +26,14 @@ export class Todo implements ITodo {
 
 function App() {
   const newTodos = [new Todo("wash the dishes"), new Todo("watch a movie")];
-
+  const obj: ITodo = {
+    id: uuid(),
+    description: "test",
+    isDone: true,
+  };
   const [todos, setTodos] = useState(newTodos);
   function addTodo(todo: Todo) {
+    console.log(todo + "this is a test ");
     setTodos([todo, ...todos]);
   }
 
